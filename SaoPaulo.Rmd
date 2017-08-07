@@ -1,0 +1,29 @@
+---
+title: "R Markdown and Leaflet Assignment"
+author: "Marcelo Angelo Pita"
+date: "7 de agosto de 2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(leaflet)
+```
+
+## Great Places of Sao Paulo!
+
+This is some great places to visit! Come to my city! Just click on the icons and know more about each one.
+
+```{r}
+links <- c("<a href='https://en.wikipedia.org/wiki/Ibirapuera_Park'>Ibirapuera Park</a>", 
+           "<a href='https://en.wikipedia.org/wiki/Allianz_Parque'>Allianz Parque</a>",
+           "<a href='https://en.wikipedia.org/wiki/Sao_Paulo_Museum_of_Art'>MASP</a>")
+lat <- c(-23.587475, -23.527485, -23.561455)
+lng <- c(-46.658835, -46.6783682, -46.655968)
+
+saoPauloLatLong <- data.frame(lat = lat, lng = lng)
+
+saoPauloLatLong %>% leaflet() %>% addTiles() %>% addMarkers(popup = links)
+
+```
+
